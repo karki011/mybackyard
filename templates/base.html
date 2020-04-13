@@ -26,13 +26,14 @@
         </ul>
       </div>
     </nav>
-
-    <form action="{% url 'search' %}" method="post">
-      {% csrf_token %}
-      <input type="text" name="search" placeholder="search" />
-      <input type="submit" name="submit" />
-    </form>
-    {% block content %} {% endblock content %}
+    <div class="container">
+      <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="search" />
+        <input type="submit" name="submit" />
+      </form>
+      {% block content %} {% endblock content %}
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
