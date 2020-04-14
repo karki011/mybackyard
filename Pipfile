@@ -9,6 +9,9 @@ verify_ssl = true
 django = "*"
 requests = "*"
 bs4 = "*"
+gunicorn = "*"
+django-heroku = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
