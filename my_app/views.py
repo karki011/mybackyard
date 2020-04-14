@@ -35,11 +35,13 @@ def new_search(request):
         else:
             post_price = "N/A"
 
-        post_image_data_id = post.find('a').get('data-ids')
-        image_id = str(post_image_data_id).split(',')
-        single_image_id = image_id[0]
-        # print('s1', single_image_id)
-        final_image = single_image_id[2:]
+        if post.find('a').get('data-ids'):
+            post_image_data_id = post.find('a').get('data-ids')
+            image_id = str(post_image_data_id).split(',')
+            single_image_id = image_id[0]
+            final_image = BASE_IMAGE_URL.format(single_image_id[2:])
+        else:
+            final_image = 'https://craigslist.org/images/peace.jpg'
 
         final_posting_result.append(
             (post_title, post_url, post_price, final_image))
