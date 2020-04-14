@@ -16,7 +16,6 @@ def home(request):
 
 
 def new_search(request):
-    print('view.search')
     search = request.POST.get('search')
     models.Search.objects.create(search=search)
     final_url = BASE_URL.format(quote_plus(search))
@@ -25,7 +24,7 @@ def new_search(request):
 
     soup = BeautifulSoup(data, 'html.parser')
     post_listing = soup.find_all('li', {'class': 'result-row'})
-
+    total_listing = len(post_listing)
     final_posting_result = []
     for post in post_listing:
         post_title = post.find(class_='result-title').text
@@ -42,12 +41,12 @@ def new_search(request):
             final_image = BASE_IMAGE_URL.format(single_image_id[2:])
         else:
             final_image = 'https://craigslist.org/images/peace.jpg'
-
         final_posting_result.append(
             (post_title, post_url, post_price, final_image))
 
     frontend = {
         'search': search,
         'final_posting_result': final_posting_result,
+        'total_listing': total_listing
     }
     return render(request, 'my_app/new_search.html', frontend)

@@ -18,22 +18,60 @@
     <title>My Back Yard</title>
   </head>
   <body>
-    <nav>
+    <nav class="#4fc3f7 light-blue lighten-2">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo center">MY-BACKYARD</a>
+        <a href="/" class="brand-logo center">BACKYARD</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="/">Home</a></li>
         </ul>
       </div>
     </nav>
-    <div class="container">
+    <div class="info center-align">
+      <h2>What do you want me to search for today?</h2>
+    </div>
+
+    <main class="container center-align">
       <form action="{% url 'search' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="search" placeholder="search" />
-        <input type="submit" name="submit" />
+        <input
+          class="center-align"
+          type="text"
+          name="search"
+          placeholder="search"
+        />
+        <button
+          class="btn waves-effect waves-light z-depth-5 #d50000 red accent-4"
+          type="submit"
+          name="action"
+        >
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
       </form>
       {% block content %} {% endblock content %}
-    </div>
+    </main>
+    <footer class="page-footer #0277bd light-blue darken-3" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <p class="grey-text text-lighten-4">
+              DID YOU FIND WHAT YOU LOOKING FOR?
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="/">HOME</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2019 SUBASH KARKI
+        </div>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

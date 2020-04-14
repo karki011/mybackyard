@@ -1,5 +1,9 @@
 {% extends 'base.html' %} {% block content %}
-<h3>{{search}}</h3>
+<div class="container result_container">
+  <a class="waves-effect waves-light btn-large result #757575 grey darken-1"
+    >Found:{{total_listing}} {{search}} listing</a
+  >
+</div>
 
 <div class="row">
   {% for post in final_posting_result %}
